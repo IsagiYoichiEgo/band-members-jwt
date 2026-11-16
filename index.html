@@ -1,94 +1,12 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Регистрация участников музыкальной группы с JWT-авторизацией">
-  <title>LOUDROOM — участники группы</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="page-shell">
-    <header class="topbar">
-      <a class="brand" href="#" aria-label="LOUDROOM — на главную">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span>LOUDROOM</span>
-      </a>
-      <span class="connection-pill"><span class="connection-dot"></span> JWT backend</span>
-    </header>
-
-    <main>
-      <section class="intro" aria-labelledby="page-title">
-        <p class="intro-note">Набор в музыкальную группу</p>
-        <h1 id="page-title">Найди своё место<br>в общем звучании.</h1>
-        <p class="intro-copy">Создай профиль музыканта, расскажи о своём опыте и присоединись к будущим репетициям.</p>
-        <div class="setlist" aria-label="Что можно сделать">
-          <span>Создать аккаунт</span>
-          <span>Заполнить профиль</span>
-          <span>Сохранить роль</span>
-        </div>
-      </section>
-
-      <section class="panel" aria-live="polite">
-        <div id="auth-view">
-          <div class="panel-heading">
-            <p>Личный кабинет</p>
-            <h2>Войти в состав</h2>
-          </div>
-          <div class="tabs" role="tablist" aria-label="Способ входа">
-            <button class="tab is-active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form">Вход</button>
-            <button class="tab" id="register-tab" type="button" role="tab" aria-selected="false" aria-controls="register-form">Регистрация</button>
-          </div>
-
-          <form id="login-form" class="auth-form" autocomplete="on">
-            <label>Имя пользователя<input name="username" autocomplete="username" required placeholder="Например, alex_guitar"></label>
-            <label>Пароль<input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Минимум 6 символов"></label>
-            <button class="primary-button" type="submit">Войти</button>
-          </form>
-
-          <form id="register-form" class="auth-form" autocomplete="on" hidden>
-            <label>Имя пользователя<input name="username" autocomplete="username" required maxlength="150" pattern="[\w.@+\-]+" placeholder="Только буквы, цифры и @ . + - _"></label>
-            <label>Пароль<input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Минимум 6 символов"></label>
-            <button class="primary-button" type="submit">Создать аккаунт</button>
-          </form>
-          <p id="auth-status" class="form-status" role="status"></p>
-        </div>
-
-        <div id="profile-view" hidden>
-          <div class="profile-topline">
-            <div>
-              <p>Профиль участника</p>
-              <h2 id="profile-username">Музыкант</h2>
-            </div>
-            <button id="logout-button" class="text-button" type="button">Выйти</button>
-          </div>
-          <form id="profile-form" class="profile-form">
-            <label>Как вас зовут<input name="first_name" maxlength="100" placeholder="Имя для афиши"></label>
-            <label>Ваша роль
-              <select name="specialization">
-                <option value="">Не выбрана</option>
-                <option value="vocals">Вокал</option>
-                <option value="guitar">Гитара</option>
-                <option value="bass">Бас-гитара</option>
-                <option value="drums">Ударные</option>
-                <option value="keys">Клавишные</option>
-                <option value="other">Другое</option>
-              </select>
-            </label>
-            <label>О себе<textarea name="bio" rows="4" placeholder="Опыт, любимые жанры, цели"></textarea></label>
-            <label>Гонорар за выступление<input name="fee" inputmode="decimal" pattern="-?\d{0,8}([.]\d{0,2})?" placeholder="Например, 3000.00"></label>
-            <button class="primary-button" type="submit">Сохранить профиль</button>
-          </form>
-          <p id="profile-status" class="form-status" role="status"></p>
-        </div>
-      </section>
-    </main>
-
-    <footer><span>JWT access + refresh</span><span>INAI coursework · 2026</span></footer>
-  </div>
-  <script type="module" src="js/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111211" />
+    <meta name="description" content="Сайт группы Thunder bend. Регистрация, вход и профиль музыканта." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Thunder bend</title>
+  </head>
+  <body><div id="root"><p style="margin:0;padding:32px;background:#121410;color:#d5f471;font:16px sans-serif">Thunder bend · Загружаем сайт…</p></div><noscript>Для работы сайта включите JavaScript в браузере.</noscript><script type="module" src="/src/main.tsx"></script></body>
 </html>
