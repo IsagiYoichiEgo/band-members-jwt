@@ -41,3 +41,20 @@ test('missing access and repeated unauthorized response cannot loop',async(t)=>{
  await assert.rejects(getProfile());assert.equal(count,4);assert.equal(getAccessToken(),null);
 });
 
+test('logout marker prevents restoration even if backend retains HttpOnly cookie',async(t)=>{
+ const previous=Object.getOwnPropertyDescriptor(globalThis,'localStorage');
+ const values=new Map<string,string>();
+ Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>values.get(key)??null,setItem:(key:string,value:string)=>values.set(key,value),removeItem:(key:string)=>values.delete(key)}});
+ try {
+  let count=0;
+  t.mock.method(globalThis,'fetch',async()=>{count++;return Response.json({access:'signed-in',user});});
+  await login({username:'test',password:'secret123'});
+  await logout(); const before=count;
+  await assert.rejects(refreshAccess(),/Войдите снова/);
+  assert.equal(count,before); assert.equal(getAccessToken(),null);
+  await login({username:'test',password:'secret123'});
+  await refreshAccess(); assert.equal(getAccessToken(),'signed-in');
+ } finally {if(previous)Object.defineProperty(globalThis,'localStorage',previous);else Reflect.deleteProperty(globalThis,'localStorage');}
+});
+
+
